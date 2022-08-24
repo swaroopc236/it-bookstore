@@ -1,0 +1,35 @@
+.home-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  gap: 15px;
+  margin-top: 100px;
+  padding: 10px;
+  /* align-items: center; */
+}
+
+.grid-item {
+  border: 2px solid black;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-item-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.grid-item-item {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-item-item:hover,
+.new-releases-container:hover {
+  cursor: pointer;
+}

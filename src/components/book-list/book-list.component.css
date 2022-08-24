@@ -1,0 +1,25 @@
+.paging {
+  display: flex;
+  justify-content: center;
+}
+
+.paging-item {
+  display: flex;
+}
+
+button {
+  color: blue;
+}
+
+.inactive > button {
+  /* background-color: gray; */
+  color: black;
+}
+
+.inactive > button:hover {
+  cursor: not-allowed;
+}
+
+.selected {
+  border: 1px solid black;
+}

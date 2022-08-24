@@ -1,0 +1,8 @@
+<h3>New releases</h3>
+<small *ngIf="isBooksLoading">Loading...</small>
+<div *ngIf="!isBooksLoading">
+  <app-book-preview
+    *ngFor="let book of newBooks"
+    [book]="book"
+  ></app-book-preview>
+</div>

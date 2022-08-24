@@ -1,0 +1,65 @@
+<div class="container">
+  <small *ngIf="!isLoading && books.length === 0">No result found</small>
+  <small *ngIf="isLoading">Loading...</small>
+  <div *ngIf="!isLoading && books.length !== 0" class="book-list">
+    <app-book-preview
+      *ngFor="let book of books"
+      [book]="book"
+    ></app-book-preview>
+  </div>
+  <div class="paging">
+    <div class="paging-item">
+      <div [class.inactive]="currentPage <= 1">
+        <button
+          [disabled]="currentPage <= 1"
+          (click)="onPageClick(currentPage - 1)"
+        >
+          &#8592; Prev
+        </button>
+      </div>
+      <div *ngIf="1 !== numOfPages">
+        <button class="btn-page" (click)="onPageClick(1)">1</button>
+      </div>
+      <div *ngIf="showEllipses(currentPage - 3)">...</div>
+      <div *ngIf="isValid(currentPage - 2)">
+        <button class="btn-page" (click)="onPageClick(currentPage - 2)">
+          {{ currentPage - 2 }}
+        </button>
+      </div>
+      <div *ngIf="isValid(currentPage - 1)">
+        <button class="btn-page" (click)="onPageClick(currentPage - 1)">
+          {{ currentPage - 1 }}
+        </button>
+      </div>
+      <div class="selected" *ngIf="isValid(currentPage)">
+        <button class="btn-page" (click)="onPageClick(currentPage)">
+          {{ currentPage }}
+        </button>
+      </div>
+      <div *ngIf="isValid(currentPage + 1)">
+        <button class="btn-page" (click)="onPageClick(currentPage + 1)">
+          {{ currentPage + 1 }}
+        </button>
+      </div>
+      <div *ngIf="isValid(currentPage + 2)">
+        <button class="btn-page" (click)="onPageClick(currentPage + 2)">
+          {{ currentPage + 2 }}
+        </button>
+      </div>
+      <div *ngIf="showEllipses(currentPage + 3)">...</div>
+      <div>
+        <button class="btn-page" (click)="onPageClick(numOfPages)">
+          {{ numOfPages }}
+        </button>
+      </div>
+      <div [class.inactive]="currentPage >= numOfPages">
+        <button
+          [disabled]="currentPage >= numOfPages"
+          (click)="onPageClick(currentPage + 1)"
+        >
+          Next &#8594;
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
