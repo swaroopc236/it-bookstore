@@ -30,12 +30,11 @@ export const searchBooksReducer = createReducer(
       isLoading: false,
     };
   }),
-  on(SET_SEARCH_QUERY, (state: any, { query, page }) => {
+  on(SET_SEARCH_QUERY, (state: any, { query }) => {
     console.log(SET_SEARCH_QUERY.type, query);
     return {
       ...state,
       query: query,
-      page: page,
     };
   }),
   on(SET_SEARCH_PAGE, (state: any, { page }) => {

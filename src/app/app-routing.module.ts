@@ -7,7 +7,7 @@ import { NewReleasesComponent } from 'src/components/new-releases/new-releases.c
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'search', component: BookListComponent },
+  { path: 'search/:query/:page', component: BookListComponent },
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@
           &#8592; Prev
         </button>
       </div>
-      <div *ngIf="1 !== numOfPages">
+      <div *ngIf="1 !== numOfPages" [class.selected]="currentPage === 1">
         <button class="btn-page" (click)="onPageClick(1)">1</button>
       </div>
       <div *ngIf="showEllipses(currentPage - 3)">...</div>
@@ -47,7 +47,7 @@
         </button>
       </div>
       <div *ngIf="showEllipses(currentPage + 3)">...</div>
-      <div>
+      <div [class.selected]="currentPage === numOfPages">
         <button class="btn-page" (click)="onPageClick(numOfPages)">
           {{ numOfPages }}
         </button>

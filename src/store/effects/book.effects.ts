@@ -21,7 +21,7 @@ export class SearchBooksEffect {
       this.actions$.pipe(
         ofType('[SEARCH BOOKS] SEARCH_BOOKS_LOADING'),
         concatLatestFrom((action: any) => this.store.select('searchBooks')),
-        tap((res) => console.log(res)),
+        // tap((res) => console.log(res)),
         mergeMap((result: any) =>
           this.bookService.searchBooks(result[1].query, result[0].page).pipe(
             map((data: any) =>

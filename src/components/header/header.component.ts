@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { NavigationService } from 'src/services/navigation.service';
 import {
   SEARCH_BOOKS_LOADING,
   SET_SEARCH_LOADING,
@@ -14,7 +15,16 @@ import {
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('searchInput') searchInput!: ElementRef;
-  constructor(private store: Store, private router: Router) {}
+  searchQuery = '';
+  constructor(
+    private store: Store<{ searchBooks: any }>,
+    private router: Router,
+    private navService: NavigationService
+  ) {
+    this.store.select('searchBooks').subscribe((data: any) => {
+      this.searchQuery = data.query;
+    });
+  }
 
   ngOnInit(): void {}
 
@@ -22,8 +32,8 @@ export class HeaderComponent implements OnInit {
     const query = this.searchInput.nativeElement.value;
     console.log(query);
     this.store.dispatch(SET_SEARCH_LOADING({ isLoading: true }));
-    this.store.dispatch(SET_SEARCH_QUERY({ query: query, page: 1 }));
-    this.store.dispatch(SEARCH_BOOKS_LOADING({ page: 1 }));
-    this.router.navigateByUrl('/search');
+    this.store.dispatch(SET_SEARCH_QUERY({ query: query }));
+    // this.store.dispatch(SEARCH_BOOKS_LOADING({ page: 1 }));
+    this.navService.navigateToSearch(query, 1);
   }
 }

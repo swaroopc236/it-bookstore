@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BookService } from 'src/services/book.service';
+import { NavigationService } from 'src/services/navigation.service';
 import {
   SET_SEARCH_LOADING,
   SET_SEARCH_QUERY,
@@ -16,6 +17,7 @@ import {
 export class HomeComponent implements OnInit {
   constructor(
     private bookService: BookService,
+    private navService: NavigationService,
     private store: Store,
     private router: Router
   ) {}
@@ -26,9 +28,9 @@ export class HomeComponent implements OnInit {
     //   console.log(data);
     // });
     this.store.dispatch(SET_SEARCH_LOADING({ isLoading: true }));
-    this.store.dispatch(SET_SEARCH_QUERY({ query: query, page: 1 }));
-    this.store.dispatch(SEARCH_BOOKS_LOADING({ page: 1 }));
-    this.router.navigateByUrl('/search');
+    this.store.dispatch(SET_SEARCH_QUERY({ query: query }));
+    // this.store.dispatch(SEARCH_BOOKS_LOADING({ page: 1 }));
+    this.navService.navigateToSearch(query, 1);
   }
 
   handleClickForNewReleases(e: any) {
