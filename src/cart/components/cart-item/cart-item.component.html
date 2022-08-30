@@ -1,0 +1,52 @@
+<div class="cart-item">
+  <div class="cart-item-title">
+    <h5>{{ item.book.title }}</h5>
+  </div>
+  <div class="quantity-action-container">
+    <div class="quantity-action">
+      <button
+        [disabled]="itemQuantity - 10 < 1"
+        (click)="updateItemQuantity(-10)"
+      >
+        -10
+      </button>
+      <button
+        [disabled]="itemQuantity - 1 < 1"
+        (click)="updateItemQuantity(-1)"
+      >
+        -
+      </button>
+      <span class="cart-item-quantity">{{ itemQuantity }}</span>
+      <button
+        [disabled]="itemQuantity + 1 > 100"
+        (click)="updateItemQuantity(+1)"
+      >
+        +
+      </button>
+      <button
+        [disabled]="itemQuantity + 10 > 100"
+        (click)="updateItemQuantity(+10)"
+      >
+        +10
+      </button>
+      <button (click)="deleteItemFromCart()">Delete</button>
+    </div>
+  </div>
+  <div class="cart-item-price-container">
+    <div class="cart-item-price">
+      <div>
+        <div>Price:</div>
+        <div>{{ item.itemPrice }}</div>
+      </div>
+      <div>
+        <div>Quantity:</div>
+        <div>x{{ itemQuantity }}</div>
+      </div>
+      <hr />
+      <div>
+        <div>Total:</div>
+        <div>{{ itemTotal }}</div>
+      </div>
+    </div>
+  </div>
+</div>

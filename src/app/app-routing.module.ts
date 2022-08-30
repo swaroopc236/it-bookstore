@@ -8,6 +8,10 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'search/:query/:page', component: BookListComponent },
+  {
+    path: 'cart',
+    loadChildren: () => import('../cart/cart.module').then((m) => m.CartModule),
+  },
 ];
 
 @NgModule({

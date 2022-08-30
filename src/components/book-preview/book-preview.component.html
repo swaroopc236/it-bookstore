@@ -3,6 +3,11 @@
     <h5>{{ book.title }}</h5>
   </div>
   <div class="action">
-    <button>Add To Cart</button>
+    <button *ngIf="!isBookAlreadyPresentInCart" (click)="addBookToCart()">
+      Add To Cart
+    </button>
+    <button *ngIf="isBookAlreadyPresentInCart" (click)="removeBookFromCart()">
+      Remove From Cart
+    </button>
   </div>
 </div>

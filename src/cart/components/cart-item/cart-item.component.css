@@ -1,0 +1,35 @@
+.cart-item {
+  border: 1px solid black;
+  padding: 0px 10px;
+  padding-bottom: 10px;
+}
+
+.quantity-action-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  margin: 0px 1px;
+}
+
+.cart-item-quantity {
+  /* margin: 0 10px; */
+  padding: 0px 5px;
+  border: 1px solid black;
+}
+
+.cart-item-price-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cart-item-price {
+  width: 10%;
+}
+
+.cart-item-price > div {
+  display: flex;
+  justify-content: space-between;
+}

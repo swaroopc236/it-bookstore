@@ -1,0 +1,24 @@
+.cart-header {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-item-list {
+  width: 70%;
+  margin: auto;
+}
+
+.empty-cart-info {
+  display: block;
+  text-align: center;
+}
+
+.cart-total-container {
+  width: 70%;
+  margin: auto;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+}

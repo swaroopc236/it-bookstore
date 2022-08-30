@@ -1,0 +1,22 @@
+<div class="cart-container">
+  <div class="cart-header">
+    <div class="cart-title">
+      <h4>Items in my cart</h4>
+    </div>
+    <div class="cart-actions">
+      <button (click)="onClearCart()">Clear Cart</button>
+    </div>
+  </div>
+  <div *ngIf="cartItems.length > 0" class="cart-item-list">
+    <app-cart-item *ngFor="let item of cartItems" [item]="item"></app-cart-item>
+  </div>
+  <small class="empty-cart-info" *ngIf="cartItems.length === 0"
+    >No items in your cart.</small
+  >
+  <div *ngIf="cartItems.length > 0" class="cart-total-container">
+    <div><h4>Total price of the cart:</h4></div>
+    <div>
+      <h4>{{ cartTotal }}</h4>
+    </div>
+  </div>
+</div>

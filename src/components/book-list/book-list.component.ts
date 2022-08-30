@@ -8,6 +8,10 @@ import {
   SEARCH_BOOKS_LOADING,
   SET_SEARCH_QUERY,
 } from 'src/store/actions/book.actions';
+import {
+  REMOVE_FROM_CART,
+  UPDATE_ITEM_QUANTITY_IN_CART,
+} from 'src/store/actions/cart.actions';
 
 @Component({
   selector: 'app-book-list',
@@ -26,7 +30,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   route$: any;
 
   constructor(
-    private store: Store<{ searchBooks: any }>,
+    private store: Store<{ searchBooks: any; cart: any }>,
     private route: ActivatedRoute,
     private router: Router,
     private navService: NavigationService
