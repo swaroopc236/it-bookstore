@@ -1,4 +1,4 @@
-<div class="cart-item">
+<!-- <div class="cart-item">
   <div class="cart-item-title">
     <h5>{{ item.book.title }}</h5>
   </div>
@@ -49,4 +49,69 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<mat-card class="cart-item">
+  <div><img mat-card-md-image [src]="item.book.image" slot="end" /></div>
+  <div>
+    <mat-card-title slot="start">{{ item.book.title }}</mat-card-title>
+
+    <div>
+      <button
+        mat-icon-button
+        color="accent"
+        [disabled]="itemQuantity - 10 < 1"
+        (click)="updateItemQuantity(-10)"
+      >
+        -10
+      </button>
+      <button
+        mat-icon-button
+        color="accent"
+        [disabled]="itemQuantity - 1 < 1"
+        (click)="updateItemQuantity(-1)"
+      >
+        <mat-icon>remove</mat-icon>
+      </button>
+      <span class="cart-item-quantity">{{ itemQuantity }}</span>
+      <button
+        mat-icon-button
+        color="accent"
+        [disabled]="itemQuantity + 1 > 100"
+        (click)="updateItemQuantity(+1)"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        color="accent"
+        [disabled]="itemQuantity + 10 > 100"
+        (click)="updateItemQuantity(+10)"
+      >
+        +10
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteItemFromCart()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="cart-item-price-container">
+    <!-- <div class="cart-item-price"> -->
+    <div>
+      <!-- <div>Price:</div> -->
+      <div>{{ item.itemPrice | currency }}</div>
+    </div>
+    <div>
+      <!-- <div>Quantity:</div> -->
+      <div>x {{ itemQuantity }}</div>
+    </div>
+    <hr />
+    <div>
+      <!-- <div>Total:</div> -->
+      <div>
+        <b>{{ itemTotal | price | currency }}</b>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+</mat-card>

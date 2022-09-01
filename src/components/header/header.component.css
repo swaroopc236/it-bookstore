@@ -1,8 +1,19 @@
 .nav-bar {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
 }
 
 .search-container {
   display: flex;
+  align-items: center;
+}
+
+button {
+  margin: 0px 10px;
 }

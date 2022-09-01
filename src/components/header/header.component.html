@@ -1,21 +1,32 @@
 <nav class="nav-bar">
-  <div>IT Bookstore</div>
+  <div class="header-container">
+    <h2>IT Bookstore</h2>
+  </div>
   <div class="search-container">
     <div>
-      <input
-        type="text"
-        id="search-input"
-        name="searchInput"
-        [value]="searchQuery"
-        placeholder="Search books"
-        #searchInput
-      />
+      <mat-form-field>
+        <input
+          type="text"
+          id="search-input"
+          name="searchInput"
+          [value]="searchQuery"
+          placeholder="Search books"
+          #searchInput
+          matInput
+        />
+      </mat-form-field>
     </div>
     <div>
-      <button (click)="onSearch()">Search</button>
+      <button mat-raised-button color="primary" (click)="onSearch()">
+        Search
+      </button>
     </div>
     <div>
-      <a routerLink="/cart"><button (click)="onSearch()">My Cart</button></a>
+      <a routerLink="/cart"
+        ><button mat-icon-button color="accent">
+          <mat-icon>shopping_cart</mat-icon>
+        </button></a
+      >
     </div>
   </div>
 </nav>

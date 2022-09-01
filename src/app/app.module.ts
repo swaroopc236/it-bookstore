@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { cartReducer } from 'src/store/reducers/cart.reducer';
 import { newBooksReducer } from 'src/store/reducers/newBooks.reducer';
 
@@ -16,6 +16,18 @@ import { BookListComponent } from '../components/book-list/book-list.component';
 import { HomeComponent } from '../components/home/home.component';
 import { searchBooksReducer } from 'src/store/reducers/book.reducer';
 import { SearchBooksEffect } from 'src/store/effects/book.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({ keys: ['searchBooks', 'cart'], rehydrate: true })(
+    reducer
+  );
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -29,13 +41,18 @@ import { SearchBooksEffect } from 'src/store/effects/book.effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({
-      newBooks: newBooksReducer,
-      searchBooks: searchBooksReducer,
-      cart: cartReducer,
-    }),
+    StoreModule.forRoot(
+      {
+        newBooks: newBooksReducer,
+        searchBooks: searchBooksReducer,
+        cart: cartReducer,
+      },
+      { metaReducers }
+    ),
     EffectsModule.forRoot([NewBooksEffect, SearchBooksEffect]),
     HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

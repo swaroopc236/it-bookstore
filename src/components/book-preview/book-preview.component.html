@@ -1,4 +1,4 @@
-<div class="book-preview">
+<!-- <div class="book-preview">
   <div class="title">
     <h5>{{ book.title }}</h5>
   </div>
@@ -10,4 +10,28 @@
       Remove From Cart
     </button>
   </div>
-</div>
+</div> -->
+<mat-card class="book-preview">
+  <mat-card-title-group>
+    <img mat-card-md-image [src]="book.image" />
+    <mat-card-title>{{ book.title }}</mat-card-title>
+  </mat-card-title-group>
+  <mat-card-actions align="end">
+    <button
+      mat-raised-button
+      color="accent"
+      *ngIf="!isBookAlreadyPresentInCart"
+      (click)="addBookToCart()"
+    >
+      Add To Cart
+    </button>
+    <button
+      mat-raised-button
+      color="warn"
+      *ngIf="isBookAlreadyPresentInCart"
+      (click)="removeBookFromCart()"
+    >
+      Remove From Cart
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,13 +1,24 @@
 <div class="container">
-  <small *ngIf="!isLoading && books.length === 0">No result found</small>
-  <small *ngIf="isLoading">Loading...</small>
+  <small *ngIf="!isLoading && books.length === 0"
+    >No result found for {{ query }}</small
+  >
+  <!-- <small *ngIf="isLoading">Searching books for {{ query }}...</small> -->
+  <mat-progress-spinner
+    *ngIf="isLoading"
+    mode="indeterminate"
+    diameter="40"
+  ></mat-progress-spinner>
+  <small *ngIf="!isLoading && books.length > 0"
+    >Total {{ totalBooks }} books found for {{ query }}</small
+  >
   <div *ngIf="!isLoading && books.length !== 0" class="book-list">
     <app-book-preview
       *ngFor="let book of books"
       [book]="book"
     ></app-book-preview>
   </div>
-  <div class="paging">
+
+  <div *ngIf="!isLoading && books.length > 0" class="paging">
     <div class="paging-item">
       <div [class.inactive]="currentPage <= 1">
         <button
