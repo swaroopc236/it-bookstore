@@ -19,6 +19,7 @@ import { SearchBooksEffect } from 'src/store/effects/book.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { BookDetailComponent } from '../components/book-detail/book-detail.component';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -37,6 +38,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     HeaderComponent,
     BookListComponent,
     HomeComponent,
+    BookDetailComponent,
   ],
   imports: [
     BrowserModule,

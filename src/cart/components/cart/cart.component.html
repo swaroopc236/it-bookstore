@@ -1,7 +1,7 @@
 <div class="cart-container">
   <div class="cart-header">
     <div class="cart-title">
-      <h4>Items in my cart</h4>
+      <h3>Items in my cart</h3>
     </div>
     <div class="cart-actions">
       <button mat-flat-button color="warn" (click)="onClearCart()">
@@ -16,9 +16,12 @@
     >No items in your cart.</small
   >
   <div *ngIf="cartItems.length > 0" class="cart-total-container">
-    <div><b>Total:</b></div>
+    <!-- <div><b>Total:</b></div> -->
     <div>
-      <b>{{ cartTotal | price | currency }}</b>
+      Total: <b>{{ cartTotal | price | currency }}</b>
     </div>
+  </div>
+  <div class="checkout-container">
+    <button mat-raised-button color="primary">Checkout</button>
   </div>
 </div>

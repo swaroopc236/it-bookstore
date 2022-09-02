@@ -1,0 +1,36 @@
+.book-details-container {
+  display: flex;
+}
+
+img {
+  width: 540px;
+  height: 640px;
+}
+
+.book-table-container {
+  padding: 30px;
+  padding-bottom: 0px;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-key {
+  font-weight: bold;
+  border-right: 1px solid currentColor;
+}
+
+.mat-column-value {
+  padding-left: 30px;
+}
+
+.book-details-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}

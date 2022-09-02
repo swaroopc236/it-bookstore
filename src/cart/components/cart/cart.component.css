@@ -1,3 +1,8 @@
+.cart-container {
+  width: 70%;
+  margin: auto;
+}
+
 .cart-header {
   margin-top: 20px;
   display: flex;
@@ -5,10 +10,10 @@
   justify-content: space-between;
 }
 
-.cart-item-list {
+/* .cart-item-list {
   width: 70%;
   margin: auto;
-}
+} */
 
 .empty-cart-info {
   display: block;
@@ -16,9 +21,16 @@
 }
 
 .cart-total-container {
-  width: 70%;
-  margin: auto;
-  padding: 0px 30px;
+  /* width: 70%;
+  margin: auto; */
+  /* padding: 0px 30px; */
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0px;
+  padding-bottom: 10px;
 }

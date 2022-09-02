@@ -20,6 +20,11 @@ export class BookService {
     return this.http.get(newBooksUrl);
   }
 
+  getBookByISBN13(isbn13: string) {
+    const isbn13BookUrl = `${this.BOOKS_URL}/books/${isbn13}`;
+    return this.http.get(isbn13BookUrl);
+  }
+
   searchBooks(query: string, page: number = 1) {
     const searchBooksUrl = `${this.BOOKS_URL}/search/${query}/${page}`;
     console.log('Requesting:: ', searchBooksUrl);

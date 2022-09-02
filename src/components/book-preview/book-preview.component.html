@@ -11,17 +11,18 @@
     </button>
   </div>
 </div> -->
-<mat-card class="book-preview">
+<mat-card class="book-preview" routerLink="/books/{{ book.isbn13 }}">
   <mat-card-title-group>
     <img mat-card-md-image [src]="book.image" />
     <mat-card-title>{{ book.title }}</mat-card-title>
+    <mat-card-subtitle>{{ book.price }}</mat-card-subtitle>
   </mat-card-title-group>
   <mat-card-actions align="end">
     <button
       mat-raised-button
       color="accent"
       *ngIf="!isBookAlreadyPresentInCart"
-      (click)="addBookToCart()"
+      (click)="addBookToCart($event)"
     >
       Add To Cart
     </button>
@@ -29,7 +30,7 @@
       mat-raised-button
       color="warn"
       *ngIf="isBookAlreadyPresentInCart"
-      (click)="removeBookFromCart()"
+      (click)="removeBookFromCart($event)"
     >
       Remove From Cart
     </button>

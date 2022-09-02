@@ -26,7 +26,8 @@ export class BookPreviewComponent implements OnInit, OnDestroy {
     );
   }
 
-  addBookToCart() {
+  addBookToCart(event: any) {
+    event.stopPropagation();
     this.store.dispatch(ADD_TO_CART({ book: this.book }));
     this.isBookAlreadyPresentInCart = this.bookService.isBookPresentInCart(
       this.book
@@ -37,7 +38,8 @@ export class BookPreviewComponent implements OnInit, OnDestroy {
     }, 2000);
   }
 
-  removeBookFromCart() {
+  removeBookFromCart(event: any) {
+    event.stopPropagation();
     this.store.dispatch(REMOVE_FROM_CART({ book: this.book }));
     this.isBookAlreadyPresentInCart = this.bookService.isBookPresentInCart(
       this.book

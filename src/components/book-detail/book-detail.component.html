@@ -1,0 +1,45 @@
+<div class="book-detail-page">
+  <small *ngIf="isLoading">Loading...</small>
+  <small *ngIf="!isLoading && book === undefined">No book found</small>
+  <div *ngIf="!isLoading && book !== undefined" class="book-details-container">
+    <div class="book-cover-container">
+      <img [src]="book.image" />
+    </div>
+    <mat-divider vertical="true"></mat-divider>
+    <div class="book-table-container">
+      <h3>{{ book.title }}</h3>
+      <h4>{{ book.subtitle }}</h4>
+      <p>{{ book.desc }}</p>
+      <p>{{ book.price }}</p>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="key">
+          <td mat-cell *matCellDef="let element">{{ element.key }}</td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <td mat-cell *matCellDef="let element">{{ element.value }}</td>
+        </ng-container>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <div class="book-details-actions">
+        <div class="cart-action">
+          <button
+            mat-raised-button
+            color="accent"
+            *ngIf="!isBookAlreadyPresentInCart"
+            (click)="addBookToCart($event)"
+          >
+            Add To Cart
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            *ngIf="isBookAlreadyPresentInCart"
+            (click)="removeBookFromCart($event)"
+          >
+            Remove From Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
